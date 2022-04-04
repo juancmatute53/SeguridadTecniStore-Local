@@ -3,6 +3,7 @@ package com.example.seguridad;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Subselect;
 
 @Data
 @AllArgsConstructor
@@ -12,4 +13,5 @@ public class User {
     private String name;
     private String email;
     private String mobile;
+
 }

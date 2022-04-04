@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 @RestController
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class SeguridadApplication {
+
     @GetMapping("/iniciar")
     public String login(){
         return "authenticated successfully" ;
@@ -23,7 +24,7 @@ public class SeguridadApplication {
 
     @GetMapping("/getUsers")
     public List<User> getUsers(){
-        return Stream.of(new User(108,"TecniStore","tecnistore2022@gmail.com","0999041505")).
+        return Stream.of(new User( 108,"TecniStore","tecnistore2022@gmail.com","0999041505")).
                 collect(Collectors.toList());
     }
 
