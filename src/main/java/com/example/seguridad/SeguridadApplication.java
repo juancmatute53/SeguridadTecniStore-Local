@@ -2,9 +2,12 @@ package com.example.seguridad;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +17,6 @@ import java.util.stream.Stream;
 @SpringBootApplication
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200"})
 public class SeguridadApplication {
 
     @GetMapping("/iniciar")
@@ -33,6 +35,16 @@ public class SeguridadApplication {
         app.setDefaultProperties(Collections
                 .singletonMap("server.port", "8090"));
         app.run(args);
+    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**").allowedOrigins("/**").allowedMethods("*").allowedOrigins("*");
+            }
+        };
     }
 
 }
